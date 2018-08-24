@@ -28,13 +28,7 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
             double thisAmount =each.getAmount();
 
-            //add frequent renter points
-            frequentRenterPoints ++;
-            //add bonus for a two day new release rental
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDayRented() > 1){
-                frequentRenterPoints ++;
-            }
-
+            frequentRenterPoints += each.getFrequentRenterPoints();
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
             totalAmount += thisAmount;
@@ -54,12 +48,7 @@ public class Customer {
         while(rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
             double thisAmount =each.getAmount();
-            //add frequent renter points
-            frequentRenterPoints ++;
-            //add bonus for a two day new release rental
-            if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && each.getDayRented() > 1){
-                frequentRenterPoints ++;
-            }
+            frequentRenterPoints += each.getFrequentRenterPoints();
 
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "<BR>\n";
@@ -71,6 +60,7 @@ public class Customer {
         result += "You earned <EM>" + String.valueOf(frequentRenterPoints) + "</EM> frequent renter points";
         return result;
     }
+
 
 
 }
