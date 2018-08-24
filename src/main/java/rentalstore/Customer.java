@@ -27,7 +27,6 @@ public class Customer {
         while(rentals.hasMoreElements()){
             Rental each = (Rental) rentals.nextElement();
             double thisAmount =each.getAmount();
-
             frequentRenterPoints += each.getFrequentRenterPoints();
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
@@ -49,7 +48,6 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
             double thisAmount =each.getAmount();
             frequentRenterPoints += each.getFrequentRenterPoints();
-
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "<BR>\n";
             totalAmount += thisAmount;
