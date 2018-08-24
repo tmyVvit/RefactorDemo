@@ -117,4 +117,18 @@ public class CustomerTest {
         String statement = customer.htmlStatement();
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n<P>Amount owed is <EM>0.0</EM><P>\nYou earned <EM>0</EM> frequent renter points", statement);
     }
+
+    @Test
+    public void should_return_correct_html_statement_given_customer_has_rent_one_regular_movie_for_3_day() {
+        Movie regularMovie = new Movie("Titanic", 0);
+        Rental threeDayRental = new Rental(regularMovie, 3);
+        customer.addRental(threeDayRental);
+
+        String statement = customer.htmlStatement();
+
+        assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
+                "\t" + regularMovie.getTitle() + "\t3.5<BR>\n" +
+                "<P>Amount owed is <EM>3.5</EM><P>\n" +
+                "You earned <EM>1</EM> frequent renter points", statement);
+    }
 }
