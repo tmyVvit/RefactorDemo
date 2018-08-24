@@ -97,6 +97,8 @@ public class CustomerTest {
                 "You earned 1 frequent renter points", statement);
     }
 
+
+
     @Test
     public void should_return_correct_html_statement_given_customer_has_rent_one_child_movie_for_4_day() {
         Movie childrenMovie = new Movie("Titanic", 2);
@@ -112,6 +114,4 @@ public class CustomerTest {
                 "<P>You owe<EM>3.0</EM><P>\n" +
                 "On this rental you earned <EM>1</EM> frequent renter points<P>", statement);
     }
-
-
 }

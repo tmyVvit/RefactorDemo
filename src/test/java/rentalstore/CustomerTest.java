@@ -97,5 +97,4 @@ public class CustomerTest {
                 "Amount owed is 3.0\n" +
                 "You earned 1 frequent renter points", statement);
     }
-
 }
