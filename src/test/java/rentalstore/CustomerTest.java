@@ -11,7 +11,7 @@ public class CustomerTest {
     @Test
     public void should_return_correct_statement_given_customer_has_no_rental() {
         String statement = customer.statement();
-        assertEquals("Rental Record for Terry\nAmount owed is 0.0\nYou earned 0 frequent renter points", statement);
+        assertEquals("Rental Record for Terry\nAmount owed is 0.0\nYou earned 0.0 frequent renter points", statement);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + regularMovie.getTitle() + "\t2.0\n" +
                 "Amount owed is 2.0\n" +
-                "You earned 1 frequent renter points", statement);
+                "You earned 1.0 frequent renter points", statement);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + regularMovie.getTitle() + "\t3.5\n" +
                 "Amount owed is 3.5\n" +
-                "You earned 1 frequent renter points", statement);
+                "You earned 1.0 frequent renter points", statement);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + newReleaseMovie.getTitle() + "\t3.0\n" +
                 "Amount owed is 3.0\n" +
-                "You earned 1 frequent renter points", statement);
+                "You earned 1.0 frequent renter points", statement);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + newReleaseMovie.getTitle() + "\t6.0\n" +
                 "Amount owed is 6.0\n" +
-                "You earned 2 frequent renter points", statement);
+                "You earned 2.0 frequent renter points", statement);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + childrenMovie.getTitle() + "\t1.5\n" +
                 "Amount owed is 1.5\n" +
-                "You earned 1 frequent renter points", statement);
+                "You earned 1.0 frequent renter points", statement);
     }
 
     @Test
@@ -95,13 +95,13 @@ public class CustomerTest {
         assertEquals("Rental Record for Terry\n" +
                 "\t" + childrenMovie.getTitle() + "\t3.0\n" +
                 "Amount owed is 3.0\n" +
-                "You earned 1 frequent renter points", statement);
+                "You earned 1.0 frequent renter points", statement);
     }
 
     @Test
     public void should_return_correct_html_statement_given_customer_has_no_rental() {
         String statement = customer.htmlStatement();
-        assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n<P>Amount owed is <EM>0.0</EM><P>\nYou earned <EM>0</EM> frequent renter points", statement);
+        assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n<P>Amount owed is <EM>0.0</EM><P>\nYou earned <EM>0.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + regularMovie.getTitle() + "\t2.0<BR>\n" +
                 "<P>Amount owed is <EM>2.0</EM><P>\n" +
-                "You earned <EM>1</EM> frequent renter points", statement);
+                "You earned <EM>1.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -129,7 +129,7 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + regularMovie.getTitle() + "\t3.5<BR>\n" +
                 "<P>Amount owed is <EM>3.5</EM><P>\n" +
-                "You earned <EM>1</EM> frequent renter points", statement);
+                "You earned <EM>1.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + newReleaseMovie.getTitle() + "\t3.0<BR>\n" +
                 "<P>Amount owed is <EM>3.0</EM><P>\n" +
-                "You earned <EM>1</EM> frequent renter points", statement);
+                "You earned <EM>1.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -157,7 +157,7 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + newReleaseMovie.getTitle() + "\t6.0<BR>\n" +
                 "<P>Amount owed is <EM>6.0</EM><P>\n" +
-                "You earned <EM>2</EM> frequent renter points", statement);
+                "You earned <EM>2.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -171,7 +171,7 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + childrenMovie.getTitle() + "\t1.5<BR>\n" +
                 "<P>Amount owed is <EM>1.5</EM><P>\n" +
-                "You earned <EM>1</EM> frequent renter points", statement);
+                "You earned <EM>1.0</EM> frequent renter points", statement);
     }
 
     @Test
@@ -185,6 +185,20 @@ public class CustomerTest {
         assertEquals("<H1>Rental Record for <EM>Terry</EM><H1><P>\n" +
                 "\t" + childrenMovie.getTitle() + "\t3.0<BR>\n" +
                 "<P>Amount owed is <EM>3.0</EM><P>\n" +
-                "You earned <EM>1</EM> frequent renter points", statement);
+                "You earned <EM>1.0</EM> frequent renter points", statement);
+    }
+
+    @Test
+    public void should_return_correct_statement_given_customer_has_rent_one_art_movie_for_1_day() {
+        Movie regularMovie = new ArtMovie("Titanic");
+        Rental oneDayRental = new Rental(regularMovie, 1);
+        customer.addRental(oneDayRental);
+
+        String statement = customer.statement();
+
+        assertEquals("Rental Record for Terry\n" +
+                "\t" + regularMovie.getTitle() + "\t6.0\n" +
+                "Amount owed is 6.0\n" +
+                "You earned 1.5 frequent renter points", statement);
     }
 }

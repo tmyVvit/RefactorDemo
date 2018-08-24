@@ -17,6 +17,6 @@ public abstract class Movie {
     }
 
     protected abstract double getAmount(int day);
-    protected abstract int getFrequentRenterPoints(int day);
+    protected abstract double getFrequentRenterPoints(int day);
 
 }

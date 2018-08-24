@@ -21,7 +21,7 @@ public class Customer {
 
     public String statement(){
         double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        double frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
         while(rentals.hasMoreElements()){
@@ -41,7 +41,7 @@ public class Customer {
 
     public String htmlStatement() {
         double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        double frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         String result = "<H1>Rental Record for <EM>" + getName() + "</EM><H1><P>\n";
         while(rentals.hasMoreElements()){

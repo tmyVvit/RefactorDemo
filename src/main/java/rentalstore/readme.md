@@ -21,3 +21,4 @@ On this rental you earned <EM>2</EM> frequent renter points<P>
 如果完成了以html格式打印小票的任务，请再完成以下要求<br>
 老板发现近期文艺片越来越多，买了一大批文艺片。<br>
 请在代码中加入文艺片的种类，租一个文艺片要收￥6块,但是积分可以增加1.5分<br>
+   ?? 

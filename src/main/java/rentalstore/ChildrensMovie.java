@@ -12,7 +12,7 @@ public class ChildrensMovie extends Movie {
         return amount;
     }
 
-    protected int getFrequentRenterPoints(int day) {
+    protected double getFrequentRenterPoints(int day) {
         return 1;
     }
 }
